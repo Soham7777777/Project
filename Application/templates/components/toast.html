@@ -1,0 +1,17 @@
+{% macro ToastMacro(component) %}
+    <div id="{{ toast.element_id }}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header d-flex justify-content-between">
+            <div class="text-{{ toast.header_text_color }} d-flex justify-content-between gap-3">
+                <i class="bi bi-{{ toast.icon_name }}"></i>
+                <div class="me-auto fw-bolder">{{ toast.header }}</div>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+
+        {% if toast.body is none %}
+            <div class="toast-body">
+                {{ toast.body }}
+            </div>
+        {% endif %}
+    </div>
+{% endmacro %}

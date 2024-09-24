@@ -1,0 +1,64 @@
+{% extends 'account/base.html' %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="form-container">
+        <h2 class="text-center">Profile</h2>
+        <a class="nav-link fs-5" href="{{ url_for('Account.dashboard') }}"><i class="bi bi-arrow-left-short"></i> Back
+            to Dashboard</a>
+    </div>
+
+    <div class="col-8 mx-auto mt-3">
+        <div class="mb-3 row">
+            <label for="name" class="col-sm-2 col-form-label fw-bolder fs-5">Name:</label>
+            <div class="col-sm-10">
+                <input class="form-control" id="name" type="text" value="{{ user.name }}" aria-label="name" disabled
+                    readonly>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="email" class="col-sm-2 col-form-label fw-bolder fs-5">Email:</label>
+            <div class="col-sm-10">
+                <input class="form-control" id="email" type="email" value="{{ user.email }}" aria-label="email" disabled
+                    readonly>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="joined_at" class="col-sm-2 col-form-label fw-bolder fs-5">Joined at:</label>
+            <div class="col-sm-10">
+                <input class="form-control" id="joined_at" type="date" value="{{ user.joined_on }}" aria-label="joined at" disabled
+                    readonly>
+            </div>
+        </div>
+
+        <div class="form-group text-start mt-1">
+            <a class="btn btn-outline-warning fw-bold me-2" href="{{ url_for('Auth.logout') }}">Logout</a>
+            <button type="button" class="btn btn-outline-danger fw-bold" data-bs-toggle="modal"
+                data-bs-target="#ConfirmDeleteModal">Delete Account</button>
+        </div>
+    </div>
+</div>
+
+<div id="ConfirmDeleteModal" class="modal fade" tabindex="-1" aria-labelledby="confirmDeleteModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Account</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete your account permanently?</p>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-danger" href="{{ url_for('Auth.delete_account') }}">Yes, Delete Forever</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

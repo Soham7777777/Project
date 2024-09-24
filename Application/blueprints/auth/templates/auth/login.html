@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+<style>
+    .form-container {
+        max-width: 500px;
+        margin: 50px auto;
+    }
+</style>
+{% endblock %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="form-container">
+        <h2 class="text-center">Login</h2>
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class="form-group mb-2">
+                {{ form.email.label(class="form-label mb-1") }}
+                {{ form.email(class="form-control") }}
+                {% for error in form.email.errors %}
+                    <div class="alert alert-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div class="form-group mb-2">
+                {{ form.password.label(class="form-label mb-1") }}
+                {{ form.password(class="form-control") }}
+                <small>Forgot password? <a href="{{ url_for('Auth.reset_password') }}">reset</a></small>
+                {% for error in form.password.errors %}
+                    <div class="alert alert-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.remember_me(class="form-check-input") }}
+                {{ form.remember_me.label(class="form-label") }}
+                {% for error in form.remember_me.errors %}
+                    <div class="alert alert-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div class="form-group text-start mt-1">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+            <small>Don't have an account yet? <a href="{{ url_for('Auth.register') }}">register</a></small>
+            {% for error in form.form_errors %}
+                    <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f5dc">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap" rel="stylesheet">
+
+
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='favicon.ico') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static',filename='favicon-16x16.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static',filename='favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="192x192"
+    href="{{ url_for('static',filename='android-chrome-192x192.png') }}">
+  <link rel="icon" type="image/png" sizes="512x512"
+    href="{{ url_for('static',filename='android-chrome-512x512.png') }}">
+  <link rel="apple-touch-icon" href="{{ url_for('static',filename='apple-touch-icon.png') }}">
+  <link rel="manifest" href="{{ url_for('static',filename='site.webmanifest') }}">
+
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='./bootstrap-5.3.3-dist/css/bootstrap.css') }}">
+  <link rel="stylesheet"
+    href="{{ url_for('static', filename='./bootstrap-icons-1.11.3/font/bootstrap-icons.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  {% block styles %}
+  {% endblock %}
+
+
+  <title>{% block title required %} {% endblock %} - ArthaChitra</title>
+</head>
+
+<body>
+  {% block header %}
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  <div class="container mt-3">
+    <ul class="flashes" style="list-style: none;">
+      {% for category, message in messages %}
+      <li class="alert alert-{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  {% endwith %}
+  {% endblock %}
+
+
+  {% block body required %}
+  {% endblock %}
+
+  <script src="{{ url_for('static', filename='htmx.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap-5.3.3-dist/js/bootstrap.bundle.js') }}"></script>
+  {% block scripts %}
+  {% endblock %}
+  <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+
+</html>

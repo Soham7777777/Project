@@ -1,0 +1,5 @@
+{% macro OOBMacro(oob) %}
+    <{{ oob.tag }} id="{{ oob.element_id }}" hx-swap-oob="{{ oob.hx_swap_oob }}">
+        {{ oob.content }}
+    </{{ oob.tag }}>
+{% endmacro %}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArthaChitra Email Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            max-width: 150px;
+        }
+
+        .content {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>Welcome to ArthaChitra!</h1>
+            <p>Thank you for signing up. To complete your registration, please verify your email address by clicking the
+                link below:</p>
+            <p><a href="{{ confirmation_link }}" class="button" style="color: white">Verify Your Email</a></p>
+            <p>If you did not create an account, please ignore this email.</p>
+            <p>The confirmation link is only valid for {{ expires_in|int }} minutes.</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2024 ArthaChitra. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+
+</html>

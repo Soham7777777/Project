@@ -1,0 +1,17 @@
+<button id="myButton" type="button" class="btn btn-primary"
+hx-get="{{ url_for('home') }}"
+hx-target="body"
+hx-swap="innerHTML"
+hx-disabled-elt="this"
+hx-indicator="#myButtonIndicator"
+>
+
+<div id="myButtonIndicator">
+        <span class="hide-when-requesting">Click Me</span>
+        <div class="htmx-indicator">
+            <span class="spinner-border spinner-border-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </span>
+        </div>
+    </div>
+</button>
